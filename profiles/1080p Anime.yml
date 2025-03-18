@@ -1,12 +1,17 @@
-name: 1080p Quality
-description: "1080p Quality utilizes the [**Golden Popcorn Performance Index**](https://dictionarry.dev/wiki/GPPi)\
-  \ to target **transparent** x264 1080p encodes. \n- 5 Quality tiers prioritise encodes\
-  \ with high 1080p GPPi scores, with fallback to 1080p WEB-DLs and streaming optimised\
-  \ encodes (**BHDStudio & hallowed**).\n- If no 1080p release can be found, the profile\
+name: 1080p Anime
+description: "1080p Anime utilizes the [**Golden Popcorn Performance Index**](https://dictionarry.dev/wiki/GPPi)\
+  \ to target **transparent x265 HDR** 1080p encodes. \n- 5 Quality tiers prioritise\
+  \ encodes with high 1080p GPPi scores, with fallback to the regular 1080p Quality\
+  \ profile (non HDR), then 1080p WEB-DLs and streaming optimised encodes (**BHDStudio\
+  \ & hallowed**).\n- **x265 is negated** but allowed, if and only if a reputable\
+  \ GPPi group has encoded it from a UHD Bluray source.\n- Non HDR x265 encodes are\
+  \ strictly forbidden in this profile\n- If no 1080p release can be found, the profile\
   \ will fall back to SD releases - **DVD remuxes  / encodes**"
 tags:
 - 1080p
 - x264
+- x265
+- HDR
 - Lossy Audio
 - Quality Focused
 upgradesAllowed: true
@@ -14,67 +19,81 @@ minCustomFormatScore: 0
 upgradeUntilScore: 320
 minScoreIncrement: 1
 custom_formats:
+- name: UHD Bluray
+  score: 350
+- name: UHD Bluray (Missing)
+  score: 350
 - name: 1080p Golden Popcorn
-  score: 160
+  score: 120
 - name: 1080p Quality Tier 1
-  score: 80
+  score: 120
 - name: 1080p Quality Tier 2
-  score: 70
+  score: 110
+- name: 1080p Quality Tier 3
+  score: 100
+- name: 1080p Quality Tier 4
+  score: 90
+- name: 1080p Quality Tier 5
+  score: 80
 - name: 1080p
   score: 60
-- name: 1080p Quality Tier 3
-  score: 60
-- name: 1080p Quality Tier 4
-  score: 50
-- name: 1080p Quality Tier 5
-  score: 40
 - name: Amazon Prime
-  score: 40
+  score: 60
 - name: Apple TV+
-  score: 40
+  score: 60
 - name: Disney+
+  score: 60
+- name: Movies Anywhere
+  score: 60
+- name: 1080p Balanced Tier 1
+  score: 50
+- name: Criterion Channel
+  score: 50
+- name: HBO Max
+  score: 50
+- name: Max
+  score: 50
+- name: Netflix
+  score: 50
+- name: Paramount+
+  score: 50
+- name: Peacock
+  score: 50
+- name: 1080p Balanced Tier 2
   score: 40
 - name: DVD Remux
   score: 40
-- name: Movies Anywhere
+- name: Hulu
   score: 40
-- name: Criterion Channel
-  score: 30
-- name: HBO Max
-  score: 30
-- name: Max
-  score: 30
-- name: Netflix
-  score: 30
-- name: Paramount+
-  score: 30
-- name: Peacock
+- name: iTunes
+  score: 40
+- name: iTunes (Missing)
+  score: 40
+- name: Roku
+  score: 40
+- name: Dolby Vision
   score: 30
 - name: SD Golden Popcorn
   score: 30
 - name: SD Quality Tier 1
   score: 30
-- name: Hulu
-  score: 20
-- name: iTunes
-  score: 20
-- name: iTunes (Missing)
-  score: 20
-- name: Roku
+- name: HDR10+
   score: 20
 - name: Scene
   score: 20
 - name: SD Quality Tier 2
   score: 20
-- name: 1080p Balanced Tier 1
-  score: 10
-- name: 1080p Balanced Tier 2
-  score: 10
 - name: Atmos
   score: 10
 - name: Atmos (Missing)
   score: 10
 - name: Blu-ray
+  score: 10
+- name: HDR10
+  score: 10
+- name: HDR10 (Missing)
+  score: 10
+- name: HDR10 (Missing) (1080p)
   score: 10
 - name: Special Edition
   score: 10
@@ -88,6 +107,8 @@ custom_formats:
   score: 7
 - name: Repack1
   score: 6
+- name: x265
+  score: -90
 - name: 2160p
   score: -9999
 - name: 3D
@@ -102,7 +123,7 @@ custom_formats:
   score: -9999
 - name: Blu-ray Remux
   score: -9999
-- name: Dolby Vision
+- name: Dolby Vision (Without Fallback)
   score: -9999
 - name: Extras
   score: -9999
@@ -114,19 +135,13 @@ custom_formats:
   score: -9999
 - name: h265 (Missing)
   score: -9999
-- name: HDR10
-  score: -9999
-- name: HDR10 (Missing)
-  score: -9999
-- name: HDR10+
-  score: -9999
 - name: Remux
   score: -9999
 - name: SD Bluray Encodes
   score: -9999
-- name: Upscaled
+- name: Unwanted x265 Groups
   score: -9999
-- name: x265
+- name: Upscaled
   score: -9999
 - name: x265 (Missing)
   score: -9999
